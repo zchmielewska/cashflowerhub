@@ -1,0 +1,72 @@
+/* General styling */
+body {
+    font-family: 'Roboto', 'Arial', 'Verdana', sans-serif;
+    background-color: #f8f9fa;
+}
+
+#wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+#sidebar-wrapper {
+    width: 250px;
+    background-color: #eeeeee;
+    padding: 20px 10px;
+}
+
+.list-group-item {
+    background-color: #eeeeee;
+    color: #333;
+    border: none;
+    padding: 5px 15px;
+}
+
+.list-group-item:hover {
+    background-color: #e5e5e5;
+    border-radius: 8px;
+}
+
+#page-content-wrapper {
+    flex-grow: 1;
+    background-color: #f8f9fa;
+    padding: 0;
+
+}
+
+.navbar {
+    height: 60px;
+    border-bottom: none !important;
+}
+
+.user-initials-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #9B982F;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-initials-circle a {
+    color: white;
+    text-decoration: none;
+}
+
+.container-fluid {
+    max-width: 1200px; /* Set a max width to center the content */
+    padding: 20px; /* Add padding around the content */
+    margin: 0 auto; /* Center the content horizontally */
+}
+
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        width: 100%;
+        height: auto;
+    }
+
+    #page-content-wrapper {
+        width: 100%;
+    }
+}
