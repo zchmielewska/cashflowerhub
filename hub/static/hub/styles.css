@@ -60,6 +60,131 @@ body {
     margin: 0 auto; /* Center the content horizontally */
 }
 
+/* Models */
+.model-list {
+    margin-top: 20px;
+}
+
+.model-item {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.model-item:hover {
+    background-color: #f8f9fa;
+}
+
+.model-title {
+    color: #333;
+    font-weight: bold;
+}
+
+.model-repo a {
+    /*color: #9B982F;*/
+    /*color: #4CAF50;*/
+    color: #2E7D32;
+    text-decoration: none;
+}
+
+.model-repo a:hover {
+    text-decoration: underline;
+}
+
+.model-repo {
+    margin-top: 10px;
+    /*font-size: 0.9em;*/
+    color: #555;
+}
+
+.model-description {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.model-item small {
+    color: #888;
+}
+
+/* Runs */
+.run-list {
+    margin-top: 20px;
+}
+
+.run-item {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.run-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Flex container for model, version, and ID */
+.run-details {
+    width: 75%; /* Take up space but leave room for status */
+}
+
+/* Ensure each item is aligned with a fixed width */
+.run-info.model {
+    width: 40%; /* Adjust to match the longest model names */
+}
+
+.run-info.version {
+    width: 30%; /* Consistent width for version */
+}
+
+.run-info.id {
+    width: 15%; /* Consistent width for ID */
+}
+
+/* Adjust font styles */
+.run-info {
+    font-size: 1rem;
+    /*font-weight: bold;*/
+    color: #333;
+    margin-right: 15px;
+}
+
+/* Status styling */
+.run-status {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+    text-align: center;
+    min-width: 100px;
+}
+
+.run-status.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.run-status.running {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.run-status.pending {
+    background-color: #e2e3e5;
+    color: #6c757d;
+}
+
+.run-status.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Media */
 @media (max-width: 768px) {
     #sidebar-wrapper {
         width: 100%;

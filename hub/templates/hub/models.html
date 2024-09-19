@@ -1,14 +1,52 @@
-<!-- hub/templates/hub/models.html -->
 {% extends 'base.html' %}
 
 {% block title %}Models - Cashflowerhub{% endblock %}
 
-<head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'hub/styles.css' %}">
-</head>
-
 {% block content %}
-<h2>Models</h2>
-<p>This is where you will display information about models.</p>
+    <h2 class="my-4">Models</h2>
+
+    <div class="model-list">
+        <!-- Example Model 1 -->
+        <div class="model-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="model-title">Annuity (13)</h5>
+                <small>Updated 3 days ago</small>
+            </div>
+            <p class="model-repo">Repository: <a href="#">https://github.com/username/annuity</a></p>
+            <p class="model-description">
+                This model calculates the cash flows associated with an annuity product,
+                accounting for periodic payments made by the annuitant and the payout phase.
+                It simulates different scenarios based on interest rates, inflation adjustments,
+                and the annuitant's life expectancy.
+            </p>
+        </div>
+
+        <!-- Example Model 2 -->
+        <div class="model-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="model-title">Whole Life Insurance (9)</h5>
+                <small>Updated 1 week ago</small>
+            </div>
+            <p class="model-repo">Repository: <a href="#">https://github.com/username/whole_life</a></p>
+            <p class="model-description">
+                This model projects the cash flows associated with whole life insurance policies.
+                It includes premium payments, death benefit payouts, and the buildup of cash value over time.
+            </p>
+        </div>
+
+        <!-- Example Model 3 -->
+        <div class="model-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="model-title">Term Life Insurance (5)</h5>
+                <small>Updated 2 weeks ago</small>
+            </div>
+            <p class="model-repo">Repository: <a href="#">https://github.com/username/term</a></p>
+            <p class="model-description">
+                This model tracks the financials of term life insurance policies, where coverage is provided for a specific period.
+                It focuses on premium income, policyholder lapse rates, and the expected payout of death benefits within the term.
+                The model also incorporates mortality assumptions and lapse rate scenarios to estimate the insurer’s risk exposure and profitability over the term duration.
+            </p>
+        </div>
+    </div>
+
 {% endblock %}
