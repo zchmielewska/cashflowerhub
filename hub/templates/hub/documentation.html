@@ -1,9 +1,54 @@
-<!-- hub/templates/hub/documentation.html -->
-{% extends 'hub/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Documentation - Cashflowerhub{% endblock %}
 
 {% block content %}
-<h2>Documentation</h2>
-<p>This is where you will display documentation content.</p>
+    <h1 class="my-4">Documentation</h1>
+
+    <div class="doc-list">
+        <!-- Example Document 1 -->
+        <div class="doc-item">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="doc-details">
+                    <h5 class="doc-title mb-1">Annuity Documentation</h5>
+                    <p class="doc-models mb-1">Linked Models: <a href="#">Annuity</a>, <a href="#">Whole Life Insurance</a></p>
+                    <p class="doc-file mb-0"><strong>File:</strong> <a href="#">annuity_documentation.pdf</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example Document 2 -->
+        <div class="doc-item">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="doc-details">
+                    <h5 class="doc-title mb-1">Expense Tracking Guide</h5>
+                    <p class="doc-models mb-1">Linked Models: <a href="#">Expense Tracking</a></p>
+                    <p class="doc-file mb-0"><strong>File:</strong> <a href="#">expense_tracking_guide.pdf</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example Document 3 -->
+        <div class="doc-item">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="doc-details">
+                    <h5 class="doc-title mb-1">Cash Flow Projection Manual</h5>
+                    <p class="doc-models mb-1">Linked Models: <a href="#">Cash Flow Projection</a></p>
+                    <p class="doc-file mb-0"><strong>File:</strong> <a href="#">cashflow_projection_manual.pdf</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example Document 4 -->
+        <div class="doc-item">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="doc-details">
+                    <h5 class="doc-title mb-1">Revenue Forecasting Instructions</h5>
+                    <p class="doc-models mb-1">Linked Models: <a href="#">Revenue Forecasting</a></p>
+                    <p class="doc-file mb-0"><strong>File:</strong> <a href="#">revenue_forecasting_instructions.pdf</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
