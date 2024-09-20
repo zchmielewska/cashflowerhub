@@ -8,16 +8,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'hub/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Added Font Awesome -->
 </head>
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-
+            <div class="sidebar-heading">cashflowerHub</div>
             <div class="list-group list-group-flush">
-                <a href="{% url 'models' %}" class="list-group-item list-group-item-action">Models</a>
-                <a href="{% url 'runs' %}" class="list-group-item list-group-item-action">Runs</a>
-                <a href="{% url 'documentation' %}" class="list-group-item list-group-item-action">Documentation</a>
+                <a href="{% url 'models' %}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-chart-line"></i> Models
+                </a>
+                <a href="{% url 'runs' %}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-play-circle"></i> Runs
+                </a>
+                <a href="{% url 'documentation' %}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-file-alt"></i> Documentation
+                </a>
             </div>
         </div>
 
@@ -27,7 +34,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div class="ml-auto">
                     <div class="user-initials-circle">
-                        <a href="#">AB</a>
+                        <a href="#">ZC</a>
                     </div>
                 </div>
             </nav>
