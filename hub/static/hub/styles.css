@@ -14,16 +14,6 @@ body {
     width: 250px;
     background-color: #eeeeee;
     padding: 20px 10px;
-
-    /*A*/
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*height: 100%;*/
-    /*overflow-y: auto;*/
-
-
-    /*B*/
     position: sticky;
     top: 0;
     height: 100vh;
@@ -77,9 +67,9 @@ body {
 }
 
 .container-fluid {
-    max-width: 1200px; /* Set a max width to center the content */
-    padding: 20px; /* Add padding around the content */
-    margin: 0 auto; /* Center the content horizontally */
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
 }
 
 /* Models */

@@ -1,15 +1,37 @@
-from django.shortcuts import render
-from .models import CashFlowModel
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import CashFlowModel, Document, Run
+from .forms import CashFlowModelForm
 
 
-def models_view(request):
-    cashflow_models = CashFlowModel.objects.all()
-    return render(request, 'models.html', {'cashflow_models': cashflow_models})
+def model_view(request):
+    cashflow_models = CashFlowModel.objects.all().order_by('-id')
+    return render(request, 'model.html', {'cashflow_models': cashflow_models})
 
 
-def runs_view(request):
-    return render(request, 'runs.html')
+def run_view(request):
+    runs = Run.objects.all().order_by('-id')
+    return render(request, 'run.html', {'runs': runs})
 
 
-def documentation_view(request):
-    return render(request, 'documentation.html')
+def document_view(request):
+    documents = Document.objects.all().order_by('-id')
+    return render(request, 'document.html', {'documents': documents})
+
+
+def model_add(request):
+    if request.method == 'POST':
+        form = CashFlowModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('model')
+    else:
+        form = CashFlowModelForm()
+    return render(request, 'model_add.html', {'form': form})
+
+
+def model_delete(request, model_id):
+    model = get_object_or_404(CashFlowModel, pk=model_id)
+    if request.method == 'POST':
+        model.delete()
+        return redirect('model')
+    return render(request, 'model_delete.html', {'model': model})

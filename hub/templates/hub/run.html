@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Runs - Cashflowerhub{% endblock %}
+
+{% block content %}
+    <h2 class="my-4">Runs</h2>
+
+    <div class="run-list">
+        {% for run in runs %}
+            <div class="run-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center run-details">
+                        <p class="run-info id mb-0"><b>#{{ run.id }}</b></p>
+                        <p class="run-info model mb-0">Model: <b>{{ run.cash_flow_model.name }} ({{ run.cash_flow_model.id }})</b></p>
+                        <p class="run-info version mb-0">Version: <b>{{ run.version }}</b></p>
+                    </div>
+                    <div class="run-status {% if run.status == 'completed' %}completed{% elif run.status == 'running' %}running{% elif run.status == 'error' %}error{% else %}pending{% endif %}">{{ run.status }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

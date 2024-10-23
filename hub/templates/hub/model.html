@@ -4,13 +4,14 @@
 
 {% block content %}
     <h2 class="my-4">Models</h2>
-    <button type="button" class="btn btn-primary">Add New Model</button>
+    <a href="{% url 'model_add' %}" type="button" class="btn btn-primary">Add model</a>
     <div class="model-list">
         {% for model in cashflow_models %}
             <div class="model-item">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="model-title">{{ model.name }} ({{ model.id }})</h5>
-                    <small>Updated {{ model.updated_at }}</small>
+                    <a href="{% url 'model_delete' model.id %}" class="btn btn-danger">Delete</a>
+
                 </div>
                 <p class="model-repo">Repository: <a href="{{ model.repository_url }}">{{ model.repository_url }}</a></p>
                 <p class="model-description">{{ model.short_description }}</p>
