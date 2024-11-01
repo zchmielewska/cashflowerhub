@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Add model - CashflowerHub{% endblock %}
+{% block title %}Edit model - CashflowerHub{% endblock %}
 
 {% block content %}
-    <h2 class="my-4">Add model</h2>
+    <h2 class="my-4">Edit model</h2>
     <form method="post" class="form-horizontal">
         {% csrf_token %}
         <div class="container">
@@ -20,6 +20,7 @@
             <div class="form-group row">
                 <div class="col-sm-9 offset-sm-3">
                     <button type="submit" class="btn btn-success">Save</button>
+                    <a href="{% url 'model' %}" class="btn btn-secondary">Cancel</a>
                 </div>
             </div>
         </div>
