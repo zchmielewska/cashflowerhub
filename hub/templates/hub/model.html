@@ -8,7 +8,7 @@
     <div class="model-list">
         {% for model in cashflow_models %}
             <div class="model-item">
-                <h5 class="model-title">{{ model.name }} ({{ model.id }})</h5>
+                <h5 class="model-title"><a href="{% url 'model_detail' pk=model.pk %}">{{ model.name }} ({{ model.id }})</a></h5>
                 <p class="model-repo">Repository: <a href="{{ model.repository_url }}">{{ model.repository_url }}</a></p>
                 <p class="model-description">{{ model.short_description }}</p>
             </div>

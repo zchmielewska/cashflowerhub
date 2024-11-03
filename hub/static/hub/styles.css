@@ -74,7 +74,10 @@ body {
 
 /* Models */
 .model-list {
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 20px;
+    gap: 15px;
 }
 
 .model-item {
@@ -84,10 +87,13 @@ body {
     padding: 15px;
     margin-bottom: 15px;
     transition: background-color 0.3s ease;
+    flex: 0 1 calc(50% - 15px);
+    box-sizing: border-box;
 }
 
-.model-item:hover {
-    background-color: #f8f9fa;
+/* Ensure the last item also takes up half the width */
+.model-item:last-child {
+    flex: 0 1 calc(50% - 15px);
 }
 
 .model-title {

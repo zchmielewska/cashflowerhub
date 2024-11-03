@@ -5,8 +5,6 @@ from .models import CashFlowModel, Document, Run
 from .forms import CashFlowModelForm
 
 
-
-
 def model_view(request):
     cashflow_models = CashFlowModel.objects.all().order_by('-id')
     return render(request, 'model.html', {'cashflow_models': cashflow_models})
