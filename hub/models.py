@@ -5,7 +5,7 @@ from django.db import models
 class CashFlowModel(models.Model):
     name = models.CharField(max_length=100)
     repository_url = models.URLField(verbose_name="Repository URL")
-    short_description = models.TextField()
+    description = models.TextField()
 
     def __str__(self):
         return self.name
