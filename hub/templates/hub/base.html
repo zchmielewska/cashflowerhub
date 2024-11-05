@@ -14,15 +14,15 @@
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="sidebar-heading"><a href="{% url 'model' %}">CashflowerHub</a></div>
+            <div class="sidebar-heading"><a href="{% url 'home' %}">CashflowerHub</a></div>
             <div class="list-group list-group-flush">
-                <a href="{% url 'model' %}" class="list-group-item list-group-item-action">
+                <a href="{% url 'model_list' %}" class="list-group-item list-group-item-action">
                     <i class="fas fa-chart-line"></i> Models
                 </a>
                 <a href="{% url 'run' %}" class="list-group-item list-group-item-action">
                     <i class="fas fa-play-circle"></i> Runs
                 </a>
-                <a href="{% url 'document' %}" class="list-group-item list-group-item-action">
+                <a href="{% url 'document_list' %}" class="list-group-item list-group-item-action">
                     <i class="fas fa-file-alt"></i> Documents
                 </a>
             </div>

@@ -4,7 +4,7 @@
 
 {% block content %}
     <h2 class="my-4">Add document</h2>
-    <form method="post" class="form-horizontal">
+    <form method="post" class="form-horizontal" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="container">
             {% for field in form %}

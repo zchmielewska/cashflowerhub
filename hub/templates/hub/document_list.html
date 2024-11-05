@@ -4,7 +4,7 @@
 
 {% block content %}
     <h2 class="my-4">Documents</h2>
-
+    <a href="{% url 'document_add' %}" type="button" class="btn btn-success">Add document</a>
     <div class="doc-grid">
         {% for document in documents %}
             <div class="doc-item">
