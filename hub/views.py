@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.urls import reverse_lazy
 
 from .models import CashFlowModel, Document, Run
-from .forms import CashFlowModelForm, DocumentForm
+from .forms import CashFlowModelForm, DocumentForm, RunForm
 
 
 class ModelListView(ListView):
@@ -13,17 +12,17 @@ class ModelListView(ListView):
     ordering = ['-id']
 
 
-class ModelDetailView(DetailView):
-    model = CashFlowModel
-    template_name = 'model_detail.html'
-    context_object_name = 'model'
-
-
 class ModelCreateView(CreateView):
     model = CashFlowModel
     form_class = CashFlowModelForm
     template_name = 'model_add.html'
     success_url = reverse_lazy('model_list')
+
+
+class ModelDetailView(DetailView):
+    model = CashFlowModel
+    template_name = 'model_detail.html'
+    context_object_name = 'model'
 
 
 class ModelUpdateView(UpdateView):
@@ -39,9 +38,30 @@ class ModelDeleteView(DeleteView):
     success_url = reverse_lazy('model_list')
 
 
-def run_view(request):
-    runs = Run.objects.all().order_by('-id')
-    return render(request, 'run.html', {'runs': runs})
+class RunListView(ListView):
+    model = Run
+    template_name = 'run_list.html'
+    context_object_name = 'runs'
+    ordering = ['-id']
+
+
+class RunCreateView(CreateView):
+    model = Run
+    form_class = RunForm
+    template_name = 'run_add.html'
+    success_url = reverse_lazy('run_list')
+
+
+class RunDetailView(DetailView):
+    model = Run
+    template_name = 'run_detail.html'
+    context_object_name = 'run'
+
+
+class RunDeleteView(DeleteView):
+    model = Run
+    template_name = 'run_delete.html'
+    success_url = reverse_lazy('run_list')
 
 
 class DocumentListView(ListView):

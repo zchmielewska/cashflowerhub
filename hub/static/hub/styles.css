@@ -257,6 +257,20 @@ body {
     color: #555;
 }
 
+.doc-file a {
+    display: inline-block;
+    max-width: 100%; /* Ensure it doesn't exceed the container width */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    color: #007bff; /* Link color (Bootstrap's default) */
+    text-decoration: none;
+}
+
+.doc-file a:hover {
+    text-decoration: underline; /* Add underline on hover for better UX */
+}
+
 .doc-id {
     font-size: 0.85rem;
     color: #555;

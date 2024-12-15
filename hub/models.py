@@ -1,3 +1,6 @@
+import os
+
+from datetime import datetime
 from django.core.validators import FileExtensionValidator
 from django.db import models
 
@@ -14,20 +17,37 @@ class CashFlowModel(models.Model):
 class Run(models.Model):
     cash_flow_model = models.ForeignKey(CashFlowModel, on_delete=models.CASCADE)
     version = models.CharField(max_length=100)
-    status = models.CharField(max_length=20, choices=(
-        ('pending', 'Pending'),
-        ('running', 'Running'),
-        ('error', 'Error'),
-        ('completed', 'Completed'),
-    ))
+    status = models.CharField(
+        max_length=20,
+        choices=(
+            ('pending', 'Pending'),
+            ('running', 'Running'),
+            ('error', 'Error'),
+            ('completed', 'Completed'),
+        ),
+        default='pending'
+    )
 
     def __str__(self):
         return f"{self.cash_flow_model.name} - Version: {self.version}, Status: {self.status}"
 
 
+def document_upload_path(instance, filename):
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    return os.path.join("documents", timestamp, filename)
+
+
 class Document(models.Model):
     name = models.CharField(max_length=100)
-    file = models.FileField(upload_to='documents/', validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    file = models.FileField(
+        upload_to=document_upload_path,
+        validators=[
+            FileExtensionValidator(
+                allowed_extensions=['pdf'],
+                message="Only PDF files are allowed."
+            )
+        ]
+    )
     cash_flow_models = models.ManyToManyField(CashFlowModel, blank=True)
 
     def __str__(self):
