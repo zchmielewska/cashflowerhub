@@ -1,5 +1,12 @@
+import subprocess
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from queue import Queue
+from threading import Thread
 
 from .models import CashFlowModel, Document, Run
 from .forms import CashFlowModelForm, DocumentForm, RunForm
@@ -38,6 +45,12 @@ class ModelDeleteView(DeleteView):
     success_url = reverse_lazy('model_list')
 
 
+@csrf_exempt
+def get_runs_status(request):
+    runs = Run.objects.all().values('id', 'status', 'cash_flow_model__name', 'cash_flow_model__id', 'version')
+    return JsonResponse({'runs': list(runs)})
+
+
 class RunListView(ListView):
     model = Run
     template_name = 'run_list.html'
@@ -45,11 +58,46 @@ class RunListView(ListView):
     ordering = ['-id']
 
 
+run_queue = Queue()
+
+
+def process_run_queue():
+    """Worker thread to process runs in the queue."""
+    while True:
+        run = run_queue.get()  # Get a Run object from the queue
+        try:
+            run.status = 'running'
+            run.save()
+
+            result = subprocess.run(["python", "run.py"], capture_output=True, text=True)
+            if result.returncode == 0:
+                run.status = 'completed'
+            else:
+                run.status = 'error'
+
+        except Exception as e:
+            run.status = 'error'
+            print(f"Error processing run {run.id}: {e}")
+
+        finally:
+            run.save()
+            run_queue.task_done()
+
+
+worker_thread = Thread(target=process_run_queue, daemon=True)
+worker_thread.start()
+
+
 class RunCreateView(CreateView):
     model = Run
     form_class = RunForm
     template_name = 'run_add.html'
     success_url = reverse_lazy('run_list')
+
+    def form_valid(self, form):
+        run = form.save()
+        run_queue.put(run)
+        return redirect(self.success_url)
 
 
 class RunDetailView(DetailView):

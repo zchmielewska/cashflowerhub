@@ -17,6 +17,8 @@ urlpatterns = [
     path('run/<int:pk>/', views.RunDetailView.as_view(), name='run_detail'),
     path('run/delete/<int:pk>/', views.RunDeleteView.as_view(), name='run_delete'),
 
+    path('api/runs-status/', views.get_runs_status, name='runs_status'),
+
     # Document
     path('document/', views.DocumentListView.as_view(), name='document_list'),
     path('document/add/', views.DocumentCreateView.as_view(), name='document_add'),
