@@ -16,6 +16,7 @@ def process_run(run):
         # Run commands
         commands = [
             f"git clone {repo_url}",
+            f"pip install cashflower",
             f"cd {repo_name} && python run.py"
         ]
         for command in commands:
