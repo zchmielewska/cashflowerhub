@@ -1,6 +1,8 @@
 import os
+import re
 
 from datetime import datetime
+from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
 
@@ -14,9 +16,24 @@ class CashFlowModel(models.Model):
         return self.name
 
 
+def validate_version(value):
+    # Allow blank values
+    if not value:
+        return
+    # Regex for allowed characters: integers, :, -, commas, and spaces
+    if not re.match(r'^[0-9:, -]*$', value):
+        raise ValidationError(
+            "Version can only contain integers, ':', '-', ',', spaces, or be blank."
+        )
+
+
 class Run(models.Model):
     cash_flow_model = models.ForeignKey(CashFlowModel, on_delete=models.CASCADE)
-    version = models.CharField(max_length=100)
+    version = models.CharField(
+        max_length=100,
+        blank=True,
+        validators=[validate_version]
+    )
     status = models.CharField(
         max_length=20,
         choices=(

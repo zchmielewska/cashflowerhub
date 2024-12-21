@@ -12,7 +12,9 @@
                     <div class="d-flex align-items-center run-details">
                         <p class="run-info id mb-0"><a href="{% url 'run_detail' pk=run.pk %}"><b>#{{ run.id }}</b></a></p>
                         <p class="run-info model mb-0">Model: <b>{{ run.cash_flow_model.name }}</b></p>
+                        {% if run.version %}
                         <p class="run-info version mb-0">Version: <b>{{ run.version }}</b></p>
+                        {% endif %}
                     </div>
                     <div class="run-status {% if run.status == 'completed' %}completed{% elif run.status == 'running' %}running{% elif run.status == 'error' %}error{% else %}pending{% endif %}">{{ run.status }}</div>
                 </div>
